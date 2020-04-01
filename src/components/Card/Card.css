@@ -1,0 +1,18 @@
+.cardbox {
+  width: 400px;
+  height: 100px;
+  border: 1px solid #252B36;
+  border-radius: 10px;
+  font-size: 24px;
+  color: #252B36;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  transition: transform 0.3s ease 0s;
+}
+
+.cardbox:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
