@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import {
   select,
-  scaleBand,
   stack,
   max,
   sum,
   scaleLinear,
-  stackOrderAscending
+  stackOrderAscending,
+  easeBounce
 } from "d3";
 import useResizeObserver from "../../useResizeObserver.js";
 
@@ -38,24 +38,30 @@ function StackedBarChart({ data, keys, colors }) {
     // scales
 
     const xScale = scaleLinear()
-      .domain(extent) // 0-80
+      .domain(extent) // 0-total value
       .range([0, width]);
 
     // rendering
     svg
       .selectAll(".layer")
       .data(layers)
-      .join("g")
+      .join(
+        enter => enter.append("g"),
+        update => update.attr("class", "updated"),
+        exit => exit.remove())
       .attr("class", "layer")
       .attr("fill", layer => colors[layer.key])
       .selectAll("rect")
       .data(layer => layer)
-      .attr("adw", layer => console.log(layer))
       .join("rect")
       .attr("y", 0)
       .attr("width", sequence => xScale(sequence[1]-sequence[0]))
+      .transition()
+      .ease(easeBounce,1)
+      .duration(500)
       .attr("x", sequence => xScale(sequence[0]))
-      .attr("height", "20px");
+      .attr("height", "30px")
+      ;
   }, [colors, data, dimensions, keys]);
 
   return (

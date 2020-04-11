@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Card from './components/Card/Card.js'
 import StackedBarChart from "./components/StackedBarChart/StackedBarChart.js";
 
-const data = [
+function App() {
+  const [data, setData] = useState([
   {
-    year: 1980,
     "🥑": 10,
     "🍌": 40,
     "🍆": 30
   }
-];
+]);
 
 const allKeys = ["🥑", "🍌", "🍆"];
 
@@ -19,13 +19,18 @@ const colors = {
   "🍌": "orange",
   "🍆": "purple"
 };
-
-function App() {
   return (
     <div className="App">
       <header className="App-header">
       <StackedBarChart data={data} keys={allKeys} colors={colors} />
       <Card/>
+      <button onClick={() => setData([
+  {
+    "🥑": 40,
+    "🍌": 70,
+    "🍆": 5
+  }
+])}>Update data</button>
       </header>
     </div>
   );

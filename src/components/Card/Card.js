@@ -3,7 +3,8 @@ import './Card.css';
 
 class Card extends React.Component {
   render() {
-    return <div className="cardbox"><p>Hello world!</p>
+    return <div className="cardbox">
+    <p>Hello world!</p>
     </div>;
   }
 }
