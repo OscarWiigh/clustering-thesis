@@ -8,7 +8,6 @@ import {
   stackOrderAscending,
   easeBounce
 } from "d3";
-import useResizeObserver from "../../useResizeObserver.js";
 
 /**
  * Component that renders a StackedBarChart
