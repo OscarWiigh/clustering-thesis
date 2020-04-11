@@ -1,12 +1,14 @@
 import React from 'react';
 import './Card.css';
 
-class Card extends React.Component {
-  render() {
-    return <div className="cardbox">
-    <p>Hello world!</p>
-    </div>;
-  }
+function Card({ answer }) {
+  return (
+    <React.Fragment>
+      <div className="cardbox">
+      <p>{answer}</p>
+      </div>
+    </React.Fragment>
+  );
 }
 
 export default Card;
