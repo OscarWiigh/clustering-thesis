@@ -17,13 +17,14 @@ import useResizeObserver from "../../useResizeObserver.js";
 function StackedBarChart({ data, keys, colors }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
-  const dimensions = useResizeObserver(wrapperRef);
+
 
   // will be called initially and on every data change
   useEffect(() => {
-    const svg = select(svgRef.current);
-    const { width, height } =
-      dimensions || wrapperRef.current.getBoundingClientRect();
+    const width = 400;
+    const svg = select(svgRef.current)
+    .attr("width", 402)
+    .attr("height", 30);
 
     // stacks / layers
     const stackGenerator = stack()
@@ -62,7 +63,7 @@ function StackedBarChart({ data, keys, colors }) {
       .attr("x", sequence => xScale(sequence[0]))
       .attr("height", "30px")
       ;
-  }, [colors, data, dimensions, keys]);
+  }, [colors, data, keys]);
 
   return (
     <React.Fragment>

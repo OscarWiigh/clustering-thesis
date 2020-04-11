@@ -1,0 +1,8 @@
+.box {
+  transition: transform 0.3s ease 0s;
+}
+
+.box:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
