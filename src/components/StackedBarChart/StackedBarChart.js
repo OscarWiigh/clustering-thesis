@@ -41,8 +41,14 @@ function StackedBarChart({ data, keys, colors }) {
       .domain(extent) // 0-total value
       .range([0, width]);
 
+    const percentageScale = scaleLinear()
+    .domain(extent)
+    .range([0,100])
+
+    var toggle = true;
+
     // rendering
-    svg
+    var bars = svg
       .selectAll(".layer")
       .data(layers)
       .join(
@@ -50,6 +56,9 @@ function StackedBarChart({ data, keys, colors }) {
         update => update.attr("class", "updated"),
         exit => exit.remove())
       .attr("class", "layer")
+
+      // Adding bars
+      bars
       .attr("fill", layer => colors[layer.key])
       .selectAll("rect")
       .data(layer => layer)
@@ -60,8 +69,28 @@ function StackedBarChart({ data, keys, colors }) {
       .ease(easeBounce,1)
       .duration(500)
       .attr("x", sequence => xScale(sequence[0]))
-      .attr("height", "30px")
-      ;
+      .attr("height", "30px");
+
+      // Adding text
+      bars
+      .selectAll("text")
+      .data(layer => layer)
+      .join("text")
+      .attr("class", "percentage")
+      .text(sequence => percentageScale(sequence[1]-sequence[0]).toFixed(1) + "%")
+      .attr("fill", "white")
+      .attr("font-size", "15px")
+      .attr("font-weight", "bold")
+      .attr("y", 16)
+      .attr("x", sequence => xScale(sequence[0]))
+
+      // Toggling percentages or numbers
+      bars
+      .selectAll("rect").on("click", function() {
+        if (toggle){bars.select("text").text(sequence => sequence[0][1]-sequence[0][0])}
+        else {bars.select("text").text(sequence => percentageScale(sequence[0][1]-sequence[0][0]).toFixed(1) + "%")}
+        toggle = !toggle;
+ });
   }, [colors, data, keys]);
 
   return (
