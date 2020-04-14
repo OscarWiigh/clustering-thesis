@@ -82,6 +82,9 @@ function StackedBarChart({ data, keys, colors }) {
       .attr("font-size", "15px")
       .attr("font-weight", "bold")
       .attr("y", 16)
+      .transition()
+      .ease(easeBounce,1)
+      .duration(500)
       .attr("x", sequence => xScale(sequence[0]))
 
       // Toggling percentages or numbers
