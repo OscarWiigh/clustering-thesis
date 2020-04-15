@@ -3,12 +3,13 @@ import Card from '../Card/Card.js'
 import StackedBarChart from "../StackedBarChart/StackedBarChart.js";
 import './ChartCard.css';
 
-function ChartCard({ answer, data, keys, colors }) {
+function ChartCard({ category, answer, data, keys, colors }) {
+  console.log(category)
   return (
     <React.Fragment>
       <div className="box">
       <StackedBarChart data={data} keys={keys} colors={colors} />
-      <Card answer={answer}/>
+      <Card category={category} answer={answer}/>
       </div>
     </React.Fragment>
   );
