@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import ChartCard from './components/ChartCard/ChartCard.js'
-import {
-  selectAll,
-} from "d3";
-const _ = require('lodash');
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+
 
 function App() {
   const [data, setData] = useState([[{"answer": "Dog"},{"category": "🥑"},[{
@@ -69,10 +67,7 @@ const colors = {
   "development": "purple"
 };
 
-// console.log(data.map(item => item[2].map(item2 => item2.sales * 5)))
-  return (
-    <div className="App">
-      <h1 className="question">What is your favorite animal?</h1>
+const HomePage = () => <div className="App"><h1 className="question">What is your favorite animal?</h1>
       <div className="main-wrapper">
       <div className="card-wrapper">
       {data.map((item,index) => <ChartCard category={item[1].category} key={index} answer={item[0].answer} data={item[2]} keys={allKeys} colors={colors}/>)}
@@ -87,6 +82,17 @@ const colors = {
       <button onClick={() => setData(updatedata)}>All</button>
       <button onClick={() => setData(updatedata)}>Update data</button></div>
     </div>
+const CirclePage = () => <div>This is the circle page</div>
+
+const BaseLayout = () => (
+      <div className="container">
+        <Route path="/" exact component={HomePage}/>
+        <Route path="/circle" exact component={CirclePage}/>
+      </div>
+  );
+
+  return (
+    <BrowserRouter><BaseLayout/></BrowserRouter>
   );
 }
 
