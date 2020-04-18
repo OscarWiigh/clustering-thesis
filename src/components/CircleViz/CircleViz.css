@@ -1,0 +1,41 @@
+
+.question {
+  margin-left: 20px;
+  text-align: left;
+}
+
+.filter {
+  text-align: left;
+  cursor: pointer;
+}
+
+.paragraph {
+  display: inline-block;
+  margin: 10px 0px 10px 10px;
+  text-transform:capitalize;
+  color: black;
+}
+
+.dot {
+  display: inline-block;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+}
+
+.controls {
+  display:inline-grid;
+}
+
+.card-wrapper {
+  justify-content: left;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.main-wrapper {
+  width: 90%;
+  display: inline-block;
+}

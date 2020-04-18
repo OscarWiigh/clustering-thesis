@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import ChartCard from './components/ChartCard/ChartCard.js'
+import BoxViz from './components/BoxViz/BoxViz.js'
+import CircleViz from './components/CircleViz/CircleViz.js'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 
@@ -59,6 +60,8 @@ const updatedata = ([[{"answer": "Dog"},{"category": "🥑"},[{
   }]]
 ])
 
+const inputquestion = "What is your favorite animal?"
+
 const allKeys = ["sales", "marketing", "development"];
 
 const colors = {
@@ -67,27 +70,15 @@ const colors = {
   "development": "purple"
 };
 
-const HomePage = () => <div className="App"><h1 className="question">What is your favorite animal?</h1>
-      <div className="main-wrapper">
-      <div className="card-wrapper">
-      {data.map((item,index) => <ChartCard category={item[1].category} key={index} answer={item[0].answer} data={item[2]} keys={allKeys} colors={colors}/>)}
-      </div>
-      </div>
-      <div className="controls">
-      {allKeys.map((item,index) => <div className="filter"><div className="dot" style={{backgroundColor: [colors[item]]}}></div><p className="paragraph">{item}</p></div>)}
-      </div>
-      <div><button onClick={() => setData(data.filter(item => item[1].category === "🔥"))}><span role="img" aria-label="emoji">🔥</span></button>
-      <button onClick={() => setData(data.filter(item => item[1].category === "🥑"))}><span role="img" aria-label="emoji">🥑</span></button>
-      <button onClick={() => setData(data.filter(item => item[1].category === "🍑"))}><span role="img" aria-label="emoji">🍑</span></button>
-      <button onClick={() => setData(updatedata)}>All</button>
-      <button onClick={() => setData(updatedata)}>Update data</button></div>
-    </div>
-const CirclePage = () => <div>This is the circle page</div>
+const HomePage = () => <BoxViz question={inputquestion} data={data} updatedata={updatedata} keys={allKeys} colors={colors} setData={setData}/>
+const CirclePage = () => <CircleViz question={"What is a circle?"}/>
 
 const BaseLayout = () => (
-      <div className="container">
+      <div className="App">
         <Route path="/" exact component={HomePage}/>
         <Route path="/circle" exact component={CirclePage}/>
+        <Link to='/'>Home</Link>
+        <Link to='/circle'>Circle</Link>
       </div>
   );
 
