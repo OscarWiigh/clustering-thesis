@@ -7,29 +7,29 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 function App() {
   const [data, setData] = useState([[{"answer": "Dog"},{"category": "🥑"},[{
-    "sales": 20,
-    "marketing": 40,
-    "development": 30
+    "sales": 5,
+    "marketing": 7,
+    "development": 4
   }]],[{"answer": "Cat"},{"category": "🥑"},[{
-    "sales": 70,
-    "marketing": 30,
-    "development": 60
+    "sales": 4,
+    "marketing": 2,
+    "development": 8
   }]],[{"answer": "Fish"},{"category": "🔥"},[{
-    "sales": 10,
-    "marketing": 18,
-    "development": 20
+    "sales": 3,
+    "marketing": 4,
+    "development": 5
   }]],[{"answer": "Guinea Pig"},{"category": "🔥"},[{
-    "sales": 29,
-    "marketing": 39,
-    "development": 20
+    "sales": 3,
+    "marketing": 2,
+    "development": 4
   }]],[{"answer": "Parrot"},{"category": "🍑"},[{
-    "sales": 60,
-    "marketing": 65,
-    "development": 22
+    "sales": 2,
+    "marketing": 3,
+    "development": 2
   }]],[{"answer": "Turtle"},{"category": "🔥"},[{
-    "sales": 16,
-    "marketing": 22,
-    "development": 23
+    "sales": 1,
+    "marketing": 1,
+    "development": 2
   }]]
 ]);
 
