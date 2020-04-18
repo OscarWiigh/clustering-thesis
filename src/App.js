@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
 import ChartCard from './components/ChartCard/ChartCard.js'
+import {
+  selectAll,
+} from "d3";
+const _ = require('lodash');
 
 function App() {
   const [data, setData] = useState([[{"answer": "Dog"},{"category": "🥑"},[{
@@ -64,12 +68,19 @@ const colors = {
   "marketing": "orange",
   "development": "purple"
 };
+
+// console.log(data.map(item => item[2].map(item2 => item2.sales * 5)))
   return (
     <div className="App">
       <h1 className="question">What is your favorite animal?</h1>
-      <header className="App-header">
+      <div className="main-wrapper">
+      <div className="card-wrapper">
       {data.map((item,index) => <ChartCard category={item[1].category} key={index} answer={item[0].answer} data={item[2]} keys={allKeys} colors={colors}/>)}
-      </header>
+      </div>
+      </div>
+      <div className="controls">
+      {allKeys.map((item,index) => <div className="filter"><div className="dot" style={{backgroundColor: [colors[item]]}}></div><p className="paragraph">{item}</p></div>)}
+      </div>
       <div><button onClick={() => setData(data.filter(item => item[1].category === "🔥"))}><span role="img" aria-label="emoji">🔥</span></button>
       <button onClick={() => setData(data.filter(item => item[1].category === "🥑"))}><span role="img" aria-label="emoji">🥑</span></button>
       <button onClick={() => setData(data.filter(item => item[1].category === "🍑"))}><span role="img" aria-label="emoji">🍑</span></button>

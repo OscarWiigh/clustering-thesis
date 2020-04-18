@@ -1,6 +1,6 @@
 .box {
   transition: transform 0.3s ease 0s;
-  margin: 1%;
+  margin: 0 1% 24px 1%;
 }
 
 .box:hover {
