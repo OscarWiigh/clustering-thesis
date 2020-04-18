@@ -71,7 +71,7 @@ const colors = {
 };
 
 const HomePage = () => <BoxViz question={inputquestion} data={data} updatedata={updatedata} keys={allKeys} colors={colors} setData={setData}/>
-const CirclePage = () => <CircleViz question={"What is a circle?"}/>
+const CirclePage = () => <CircleViz question={inputquestion}/>
 
 const BaseLayout = () => (
       <div className="App">
