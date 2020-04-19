@@ -14,11 +14,11 @@ function BoxViz({ question, data, updatedata, keys, colors, setData }) {
       <div className="controls">
       {keys.map((item,index) => <div className="filter"><div className="dot" style={{backgroundColor: [colors[item]]}}></div><p className="paragraph">{item}</p></div>)}
       </div>
-      <div><button onClick={() => setData(data.filter(item => item[1].category === "🔥"))}><span role="img" aria-label="emoji">🔥</span></button>
+      {/* <div><button onClick={() => setData(data.filter(item => item[1].category === "🔥"))}><span role="img" aria-label="emoji">🔥</span></button>
       <button onClick={() => setData(data.filter(item => item[1].category === "🥑"))}><span role="img" aria-label="emoji">🥑</span></button>
       <button onClick={() => setData(data.filter(item => item[1].category === "🍑"))}><span role="img" aria-label="emoji">🍑</span></button>
-      <button onClick={() => setData(updatedata)}>All</button>
-      <button onClick={() => setData(updatedata)}>Update data</button></div>
+      <button onClick={() => setData(updatedata)}>All</button> */}
+      <button onClick={() => setData(updatedata)}>Update data</button>
     </React.Fragment>
   );
 }

@@ -5,7 +5,7 @@ import {
   max,
   sum,
   scaleLinear,
-  stackOrderAscending,
+  stackOrderDescending,
   easeBounce
 } from "d3";
 
@@ -28,7 +28,7 @@ function StackedBarChart({ data, keys, colors }) {
     // stacks / layers
     const stackGenerator = stack()
       .keys(keys)
-      .order(stackOrderAscending);
+      .order(stackOrderDescending);
     const layers = stackGenerator(data);
     const extent = [
       0,

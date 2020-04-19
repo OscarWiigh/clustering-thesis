@@ -5,5 +5,17 @@
 }
 
 a {
+  font-weight: bold;
   margin: 5px;
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.link-wrapper{
+  text-align: right;
+  background-color: cornflowerblue;
 }

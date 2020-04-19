@@ -3,9 +3,13 @@ import './App.css';
 import BoxViz from './components/BoxViz/BoxViz.js'
 import CircleViz from './components/CircleViz/CircleViz.js'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
+import datafile from './data.js' 
+import datafile2 from './data2.js' 
 
 
 function App() {
+  const [datafil, setDatafile] = useState(datafile)
+
   const [data, setData] = useState([[{"answer": "Dog"},{"category": "🥑"},[{
     "sales": 5,
     "marketing": 7,
@@ -22,7 +26,7 @@ function App() {
     "sales": 3,
     "marketing": 2,
     "development": 4
-  }]],[{"answer": "Parrot"},{"category": "🍑"},[{
+  }]],[{"answer": "Parrot"},{"category": "🥑"},[{
     "sales": 2,
     "marketing": 3,
     "development": 2
@@ -34,8 +38,8 @@ function App() {
 ]);
 
 const updatedata = ([[{"answer": "Dog"},{"category": "🥑"},[{
-    "sales": 13,
-    "marketing": 47,
+    "sales": 16,
+    "marketing": 40,
     "development": 19
   }]],[{"answer": "Cat"},{"category": "🥑"},[{
     "sales": 13,
@@ -71,14 +75,16 @@ const colors = {
 };
 
 const HomePage = () => <BoxViz question={inputquestion} data={data} updatedata={updatedata} keys={allKeys} colors={colors} setData={setData}/>
-const CirclePage = () => <CircleViz keys={allKeys} colors={colors} question={inputquestion}/>
+const CirclePage = () => <CircleViz setDatafile={setDatafile} data2={datafile2} data={datafil} keys={allKeys} colors={colors} question={inputquestion}/>
 
 const BaseLayout = () => (
       <div className="App">
-        <Route path="/" exact component={HomePage}/>
-        <Route path="/circle" exact component={CirclePage}/>
+      <div className="link-wrapper">
         <Link to='/'>Home</Link>
         <Link to='/circle'>Circle</Link>
+        </div>
+        <Route path="/" exact component={HomePage}/>
+        <Route path="/circle" exact component={CirclePage}/>
       </div>
   );
 

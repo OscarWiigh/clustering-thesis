@@ -1,18 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import './CirclePack.css';
-import data from './data.js' 
 import {
   select,
   pack,
   hierarchy,
-  scaleLinear,
   event,
-  interpolateHcl,
   interpolateZoom
 } from "d3";
 
-function CirclePack() {
-  const [width, height] = [600, 600]
+function CirclePack({data}) {
+  const [width, height] = [550, 550]
 
   const packer = data => pack()
     .size([width, height])
@@ -39,9 +36,11 @@ useEffect(() => {
   const node = svg.append("g")
     .selectAll("circle")
     .data(root.descendants().slice(1))
-    .join("circle")
+    .join("circle",
+    update => update.attr("class", "updated"))
       .attr("fill", d => d.data.color)
       .attr("pointer-events", d => !d.children ? "none" : null)
+      .attr("cursor", "pointer")
       .on("mouseover", function() { select(this).attr("stroke", "#000"); })
       .on("mouseout", function() { select(this).attr("stroke", null); })
       .on("click", d => focus !== d && (zoom(d), event.stopPropagation()));
@@ -71,7 +70,6 @@ useEffect(() => {
   }
 
   function zoom(d) {
-    const focus0 = focus;
 
     focus = d;
 
