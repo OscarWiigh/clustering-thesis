@@ -23,10 +23,6 @@ function CirclePack() {
 
   const svgRef = useRef();
   const wrapperRef = useRef();
-  const color = scaleLinear()
-    .domain([0, 5])
-    .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
-    .interpolate(interpolateHcl)
 
 useEffect(() => {
     const svg = select(svgRef.current)
@@ -52,7 +48,9 @@ useEffect(() => {
       
 
   const label = svg.append("g")
-      .style("font", "20px sans-serif")
+      .style("font", "40px bold")
+      .style("fill", "white")
+      .style("font-family", "Helvetica")
       .attr("pointer-events", "none")
       .attr("text-anchor", "middle")
     .selectAll("text")
@@ -97,7 +95,7 @@ useEffect(() => {
 
   return (
     <React.Fragment>
-      <div ref={wrapperRef}>
+      <div className="circlewrapper" ref={wrapperRef}>
         <svg ref={svgRef}>
         </svg>
       </div>

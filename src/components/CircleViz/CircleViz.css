@@ -27,6 +27,11 @@
   display:inline-grid;
 }
 
+.top {
+  display: inline-block !important;
+  vertical-align: top;
+}
+
 .card-wrapper {
   justify-content: left;
   display: flex;
